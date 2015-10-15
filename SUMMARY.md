@@ -1,6 +1,6 @@
 # Summary
 
 * [Introduction](README.md)
-* [Week0](0MOOC/README.md)
-  * [配置Disqus](week0/调试disqus.md)
+* [Week0]
+  * [配置Disqus](Week0/调试disqus.md)
 
