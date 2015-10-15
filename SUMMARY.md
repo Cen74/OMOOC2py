@@ -1,8 +1,6 @@
 # Summary
 
 * [Introduction](README.md)
-* [教学反转](0MOOC/README.md)
-* [基础旋进](1sTry/README.md)
-* [素材 (draft)](draft/README.md)
-   * [教程该怎么写](draft/how2tutorial.md)
+* [Week0](0MOOC/README.md)
+  * [配置Disqus](week0/调试disqus.md)
 
