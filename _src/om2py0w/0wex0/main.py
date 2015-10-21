@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
+
 print "This is Cen's interactive Diary System"
 
 diary = open('Diary.txt', 'a+')
 
 print "I will open the following file: %r" % diary.name
-
 
 text = ""
 stopword = "q"
@@ -17,6 +18,7 @@ while True:
 	
 diary.write(text)
 
+＃将文件指针启示设置为0
 diary.seek(0)
 
 print_diary = "If you want to print diary, Enter \'y\'?"
