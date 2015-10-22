@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from datetime import date
 
 print "This is Cen's interactive Diary System"
 
@@ -9,6 +10,7 @@ print "I will open the following file: %r" % diary.name
 text = ""
 stopword = "q"
 print "Enter \'q\' to quit input"
+now = date.today
 
 while True:
 	line = raw_input('input >')

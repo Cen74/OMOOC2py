@@ -18,12 +18,49 @@
 	+ 拥有记录
 	+ 多用户
 
-## 原代码
+## 第一版代码
 
-## 解决问题
+```
+print "This is Cen's interactive Diary System"
 
-### 输入问题
-raw_input() 只能一次输入一行，最开始认为python可能有一次输入多行的函数，但在官方文档里没搜索到。想这种需求应该很常见，直接通过google搜索 python input more lines,在stackoverflow上找到[解决方案](http://stackoverflow.com/questions/11664443/raw-input-across-multiple-lines-in-python)第一答案里面关于iter函数不太理解，先不纠结。选择第二个比较简单的方案，通过设置空白为stopword来控制输入,可以直接使用。str.strip（）函数会删除掉字符串的所有空白，我还没测试过程序执行是否就没有问题了。
+diary = open('Diary.txt', 'a+')
+
+print "I will open the following file: %r" % diary.name
+
+
+text = ""
+stopword = "q"
+print "Enter \'q\' to quit input"
+
+while True:
+	line = raw_input('input >')
+	if line.strip() == stopword:
+		break
+	text += "%s\n" % line
+	
+diary.write(text)
+
+diary.seek(0)
+
+print_diary = "If you want to print diary, Enter \'y\'?"
+mark = raw_input(print_diary)
+
+
+if mark.lower() == 'y':
+	print "The content of the diary is:"
+	print diary.read()
+else:
+	print "quit the diary"
+		
+	
+diary.close()
+
+```
+
+## 遇到问题
+
+### 输入
+raw_input() 只能一次输入一行，最开始认为python可能有一次输入多行的函数，但在官方文档里没搜索到。想这种需求应该很常见，直接通过google搜索 python input more lines,在stackoverflow上找到[解决方案](http://stackoverflow.com/questions/11664443/raw-input-across-multiple-lines-in-python)。第一答案里面关于iter函数不太理解，先不纠结。选择第二个比较简单的方案，通过设置空白为stopword来控制输入,可以直接使用。str.strip（）函数会删除掉字符串的所有空白，我还没测试过程序执行是否就没有问题了。
 
 ```
 text = ""
@@ -37,5 +74,18 @@ print text
 ```
 
 ### 文件打开方式
-通过file.open(,a+)模式可以直接创建一个日记文件，每次在文件最后追加内容。最开始设想是每次写入文件、保存、再读取、打印。在思考输入问题时想到可以用file.seek(0)将文件指针重新定位到开始位置，这样可以少写点代码。
+通过file.open(,a+)模式可以直接创建一个日记文件，每次在文件最后追加内容。最开始设想是每次写入文件、保存、再读取、打印。在思考输入问题时想到可以用file.seek(0)将文件指针重新定位到开始位置，也可以先关闭文件再重新read()
+
 seek()函数是在笨方法中关于文件写入和读取操作时学到的。另外需要注意到在windows下如果用'w+'模式打开文件，用write()写入内容后，再调用read()会导致乱码。这是一个大坑，现在对其中的原理还不是很清楚。具体可见[python写文件打开后是乱码](http://segmentfault.com/q/1010000000397712)
+
+### 小结
+- 新学函数 
+	- str.lower()
+	- str.strip()
+	- f.seek()
+	-  while, if 
+- 遗留
+	-  没有参考芝麻星的卡片，设计思路不太严谨。
+		-  好像没达到CLI 标准
+		-  缺乏日志功能
+	
