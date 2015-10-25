@@ -10,7 +10,7 @@ print "I will open the following file: %r" % diary.name
 text = ""
 stopword = "q"
 print "Enter \'q\' to quit input"
-now = date.today
+# now = date.todayf
 
 while True:
 	line = raw_input('input >')
@@ -20,7 +20,7 @@ while True:
 	
 diary.write(text)
 
-＃将文件指针启示设置为0
+# 将文件指针启示设置为0
 diary.seek(0)
 
 print_diary = "If you want to print diary, Enter \'y\'?"
