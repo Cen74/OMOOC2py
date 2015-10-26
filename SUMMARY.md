@@ -4,6 +4,7 @@
 * [教学反转](0MOOC/README.md)
   * [0wd4 课堂笔记](Week0/note.md)
   * [101 及简交互式日记系统](Week1/test1.md)
+  * [1wd4 课堂笔记](note/1wd4_note.md)
 * [基础旋进](1sTry/README.md)
 * [迭代作品](2nDev/README.md)
 * [人生首秀](3rDemo/README.md)
