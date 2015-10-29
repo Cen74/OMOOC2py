@@ -9,7 +9,8 @@ class App:
     
         frame = Frame(master)
         frame.pack()
-           
+       
+        
         self.entrythingy = Entry()
         self.entrythingy.pack()
 
@@ -53,6 +54,7 @@ class App:
         else:
             self.text.insert(END, "This is a new diary: \n")
         
+
         
 root = Tk()
 
@@ -60,3 +62,4 @@ app = App(root)
 
 
 root.mainloop()
+

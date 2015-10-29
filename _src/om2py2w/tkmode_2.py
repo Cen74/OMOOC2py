@@ -3,7 +3,7 @@ from Tkinter import *
 
 class App:
 
-    contents = StringVar()
+    
 
     def __init__(self, master):
     
@@ -13,16 +13,25 @@ class App:
         
         self.entrythingy = Entry()
         self.entrythingy.pack()
+
+        self.contents = StringVar()
+        self.entrythingy["textvariable"] = self.contents
         
 
-        self.label = Label(master, textvariable=contents)
-        self.label.pack()
+        #self.label = Label(master, textvariable=self.contents)
+        #self.label.pack()
+
+        self.text = Text(master, height=8, width=60)
+        self.text.pack()
+
 
         self.entrythingy.bind('<Key-Return>', self.show_input)
         
     def show_input(self, event):
-        from_input = self.entrythingy.get()
-        contents.set(from_input)
+        print " > " , \
+            self.entrythingy.get()
+        self.text.insert(END, self.contents.get())
+        self.text.insert(END, "\n")
 
         
 root = Tk()
