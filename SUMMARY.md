@@ -8,6 +8,7 @@
 * [基础旋进](1sTry/README.md)
   * [101 极简交互式日记系统](Week1/test1.md)
   * [GUI 极简日记桌面版](note/w2_task.md)
+  * [101 极简日记网络半](note/w3_task.md)
 * [迭代作品](2nDev/README.md)
 * [人生首秀](3rDemo/README.md)
 * [代码 (_src)](_src/README.md) 
