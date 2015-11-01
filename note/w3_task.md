@@ -18,5 +18,5 @@
 
 ## 进展
 
-!(http://learnyousomeerlang.com/static/img/udp.png)
+!［socket](http://learnyousomeerlang.com/static/img/udp.png)
 !(http://docs.linuxtone.org/ebooks/C&CPP/c/images/socket.udpflowchart.png)
