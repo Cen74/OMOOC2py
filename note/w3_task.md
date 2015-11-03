@@ -40,3 +40,76 @@ socket.gaierror: [Errno 8] nodename nor servname provided, or not known
 	- if not sth首先就理解反了，含义是如果sth没有意义（meaningful)。关于if not 还有更深的坑。见stackoverflow上 [why-if-not-better](http://stackoverflow.com/questions/100732/why-is-if-not-someobj-better-than-if-someobj-none-in-python) 
 	- accept, recv等socket函数在while里没有一直循环运行，只是在有连接时才会执行到下一步。
 
+小结
+	- 程序与预想不一致的要多打印
+
+> 2015-11-02 更新
+### 原型
+支持中文，能过接受并返回的udp server 和 client.
+
+server:
+
+```
+# -*- coding: UTF-8 -*-
+from socket import *  
+from time import ctime  
+from datetime import date
+import sys
+import os 
+
+HOST = ''
+PORT = 4444
+BUFSIZ=1024  
+ADDR=(HOST,PORT) 
+
+diary_server = socket(AF_INET, SOCK_DGRAM)
+diary_server.bind(ADDR)
+
+
+while True:
+	print "waiting for connection"
+	(data, addr_client) = diary_server.recvfrom(BUFSIZ)
+
+	content = data.decode('UTF-8')
+	print "conncetd from %r, message: %r" % (addr_client, content)
+
+	diary_server.sendto(data, addr_client)
+```
+
+client:
+
+```
+# -*- coding: UTF-8 -*-
+from socket import *  
+from time import ctime  
+from datetime import date
+import sys
+import os 
+
+HOST = 'localhost'  
+PORT = 4444  
+BUFSIZ = 1024  
+ADDR = (HOST,PORT)  
+  
+diary_client = socket(AF_INET,SOCK_DGRAM) 
+µµ
+input_c = raw_input(' > ')
+data = input_c.decode('UTF-8').encode('UTF-8')
+
+diary_client.sendto(data, ADDR)
+(recv, addr) = diary_client.recvfrom(BUFSIZ)
+
+print "recv %r, from %r " % (recv.decode('UTF-8'), addr)
+
+diary_client.close()
+
+```
+
+- 在中文输入上花了不少时间。前面测试那篇博客的代卖，对中文的支持其实是有问题的，让我被误导了很久，充分说明信息源很重要。encode/decode的概念也特别就纠结，在
+stack上［'ascii' codec can't decode byte](http://stackoverflow.com/questions/9644099/python-ascii-codec-cant-decode-byte)有案例。
+- 体会对基础概念要理解透，细节很重要，很多时候是头脑里没意识到的错误假设影响了你。用’小黄鸭‘把代码解释一遍，有帮助。
+
+
+
+
+

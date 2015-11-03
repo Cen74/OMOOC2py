@@ -10,19 +10,18 @@ PORT = 4444
 BUFSIZ=1024  
 ADDR=(HOST,PORT) 
 
-diary_server = socket(AF_INET, SOCKET_DGRAM)
+diary_server = socket(AF_INET, SOCK_DGRAM)
 diary_server.bind(ADDR)
 
 
-
-while ture:
+while True:
 	print "waiting for connection"
 	(data, addr_client) = diary_server.recvfrom(BUFSIZ)
 
-	print ""
+	content = data.decode('UTF-8')
+	print "conncetd from %r, message: %r" % (addr_client, content)
 
-	if data in ['help' 'h' '?']:
-		diary_server.sendto(help_s, addr)
-	elif data in ['quit' 'q' 'bye']:
-		diary_server.sendto['quit', addr]
+	diary_server.sendto(data, addr_client)
+
+	
 

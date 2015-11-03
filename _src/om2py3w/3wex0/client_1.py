@@ -12,11 +12,12 @@ ADDR = (HOST,PORT)
   
 diary_client = socket(AF_INET,SOCK_DGRAM) 
 
-data = raw_input(' > ')
+input_c = raw_input(' > ')
+data = input_c.decode('UTF-8').encode('UTF-8')
 
 diary_client.sendto(data, ADDR)
 (recv, addr) = diary_client.recvfrom(BUFSIZ)
 
-print "recvfrom %s: %s " (addr, recv)
+print "recv %r, from %r " % (recv.decode('UTF-8'), addr)
 
 diary_client.close()
