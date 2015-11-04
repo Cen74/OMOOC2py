@@ -5,12 +5,12 @@ from datetime import date
 import sys
 import os 
 
-def send_history():
+def diary_history():
     diary = open('diary.txt')
     content = diary.read()
-    content = content.decode('UTF-8').encode('UTF-8')
-    diary_server.sendto(byte(content), addr_client)
+    content = content.decode('UTF-8').encode('UTF-8')  
     diary.close()
+    return content #传递unicode的字符串
 
 def foo():
     HOST = ''
@@ -21,22 +21,33 @@ def foo():
     diary_server = socket(AF_INET, SOCK_DGRAM)
     diary_server.bind(ADDR)
 
+    if os.path.exists('diary.txt'):
+        file_content = diary_history()
+    else:
+        file_content = "Empty Diary" 
+
+
 
     diary = open('diary.txt', 'a+', 0) #with statemanet / flush
 
-    # while True:
-    print "waiting for connection"
-    (data, addr_client) = diary_server.recvfrom(BUFSIZ)
+    while True:
+        print "waiting for connection"
+        (data, addr_client) = diary_server.recvfrom(BUFSIZ)
+        print "conncetd from %r, message: %r" % (addr_client, data)
 
-    content = data.decode('UTF-8')
-    print "the text are:\n %s" % content
-        '''print "conncetd from %r, message: %r" % (addr_client, content)
-        diary.write(data)
-        diary.write('\n')
+        if data == 'test': 
+            diary_server.sendto(file_content, addr_client)
+    
+        elif data == 'syn': # 在win power shell 
+            #print type(content) 
+            diary_server.sendto(diary_history(), addr_client)
+        else:
+            # print data 如果是中文，传递回来的不能正常显示 
+            diary.write(data)
+            diary.write('\n')
 
-        diary_server.sendto(data, addr_client) '''
-
-        
+    diary.close()
+    diary_server.close()
 
 
 if __name__  == '__main__':
