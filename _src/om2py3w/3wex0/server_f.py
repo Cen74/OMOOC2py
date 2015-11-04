@@ -18,8 +18,10 @@ print "waiting for connection"
 (data, addr_client) = diary_server.recvfrom(BUFSIZ)
 
 content = data.decode('UTF-8')
-print "conncetd from %r  " % addr_client
-print content
+print addr_client
+# print " the address %r" % addr_client  转换不了
+print data
+
 
 
 	
