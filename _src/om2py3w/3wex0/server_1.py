@@ -14,7 +14,7 @@ diary_server = socket(AF_INET, SOCK_DGRAM)
 diary_server.bind(ADDR)
 
 
-# while True:
+while True:
 	print "waiting for connection"
 	(data, addr_client) = diary_server.recvfrom(BUFSIZ)
 
