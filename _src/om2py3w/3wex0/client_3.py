@@ -21,14 +21,14 @@ def foo():
 	while True:
 		input_c = raw_input(' > ')
 
-		if input_c == 'help' or input_c == 'h' or input_c == '?':
+		if input_c in ['help', 'h', '?']:
 			print """
 			  press \'q\' or \'quit\' \'bye\' for help
  
 			  press  \'h\' or \'help\' or \'bye\' to exit
 
 			  press syn to return history"""
-		elif input_c == 'bye' or input_c == 'q' or input_c == 'quit':
+		elif input_c in ['bye', 'q' ,'quit']:
 			print "bye"
 			break
 		elif input_c == 'syn':
