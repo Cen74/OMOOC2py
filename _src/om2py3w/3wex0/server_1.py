@@ -18,7 +18,7 @@ while True:
 	print "waiting for connection"
 	(data, addr_client) = diary_server.recvfrom(BUFSIZ)
 
-	content = data.decode('UTF-8')
+	content = data#.decode('UTF-8')
 	print "conncetd from %r, message: %r" % (addr_client, content)
 
 	diary_server.sendto(data, addr_client)

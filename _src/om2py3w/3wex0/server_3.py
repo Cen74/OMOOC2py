@@ -38,7 +38,7 @@ def foo():
         if data == 'test': 
             diary_server.sendto(file_content, addr_client)
     
-        elif data == 'syn': # 在win power shell 
+        elif data == 'syn': 
             #print type(content) 
             diary_server.sendto(diary_history(), addr_client)
         else:
