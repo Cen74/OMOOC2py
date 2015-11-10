@@ -79,6 +79,7 @@ run(host='localhost', port=8088, debug=True,reloader=True)
 	- 如何做到和命令行兼容
 
 - Mac 下查询端口占用和关闭进程的命令
+
 ```
 lsof -i:<端口号>
 kill -9 <进程ID>
