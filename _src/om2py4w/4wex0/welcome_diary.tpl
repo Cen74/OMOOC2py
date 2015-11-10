@@ -9,11 +9,11 @@
 
 
         	<p> 历史内容 ：</p>
-      		</tr>
+      			</tr>
 
-      		<td> {{content}} </td>
+      				<td> {{content}} </td>
 
-      		</tr>
+      			</tr>
 
         </body>
 </html>
