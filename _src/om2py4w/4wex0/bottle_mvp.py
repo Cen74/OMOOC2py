@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 from bottle import route, run, template, request, get, post
 
@@ -43,6 +44,7 @@ def welcome():
 	return '''
         <form action="/diary" method="post">
             输入: <input name="content" type="text" />
+            value:<input type="text" size="44" name="t1" value="文本内容">
             <input value="确认" type="submit" />
         </form>
     '''
