@@ -1,5 +1,4 @@
 
-
 <html>
 	    <body>
           	<h1> Cen的日记  </h1>
@@ -9,10 +8,14 @@
 
 
         	<p> 历史内容 ：</p>
-          
-      		% for line in content: 
-            <br/> {{line}} <br>
-          % end
+          % if type(content) is list: 
+      		%   for line in content: 
+                <br/> {{line}} <br/>
+          %   end
+          % else: 
+            <br/> {{content}} <br/>
+
+       
       		
 
         </body>
