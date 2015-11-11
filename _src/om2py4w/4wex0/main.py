@@ -34,7 +34,6 @@ def welcome():
 	data = check_file()
 	return template('welcome_diary', content=data )
 
-
 @post('/diary')
 def print_input():
     client_input = request.forms.get('content')
@@ -42,7 +41,6 @@ def print_input():
     data = diary_lines()
     return template('welcome_diary', content=data)
         	
-       
 run(host='localhost', port=8080, debug=True,reloader=True)
 
 
