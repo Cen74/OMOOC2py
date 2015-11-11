@@ -5,16 +5,16 @@ import os
 from bottle import route, run, template, request, get, post, view
 
 
-def diary_history():
+def diary_lines():
     diary = open('diary.txt')
-    content = diary.read()
+    content = diary.readlines()
     content = content
     diary.close()
     return content 
 
 def check_file():
     if os.path.exists('diary.txt'):
-        file_content = diary_history()
+        file_content = diary_lines()
     else:
         file_content = "Empty Diary" 
 

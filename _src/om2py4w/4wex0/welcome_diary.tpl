@@ -9,11 +9,11 @@
 
 
         	<p> 历史内容 ：</p>
-      			</tr>
-
-      				<td> {{content}} </td>
-
-      			</tr>
+          
+      		% for line in content: 
+            <br/> {{line}} <br>
+          % end
+      		
 
         </body>
 </html>
