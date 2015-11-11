@@ -1,6 +1,5 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-from bottle import route, run, template, request, get, post
+from bottle import route, run, template, request, get, post, view
 
 """
 @route('/hello')
@@ -41,19 +40,15 @@ def do_login():
 
 @get('/diary')
 def welcome():
-	return '''
-        <form action="/diary" method="post">
-            输入: <input name="content" type="text" />
-            value:<input type="text" size="44" name="t1" value="文本内容">
-            <input value="确认" type="submit" />
-        </form>
-    '''
+	return template('print', content=None )
+
 @post('/diary')
 def print_input():
-	content = request.forms.get('content')
-	return "you input is %s" % content
-
-run(host='localhost', port=8080, debug=True,reloader=True)
+	client_input = request.forms.get('content')
+	return template('print.tpl', content=client_input)
+        	
+       
+run(host='localhost', port=8088, debug=True,reloader=True)
 
 
 
