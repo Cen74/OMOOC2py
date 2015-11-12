@@ -10,13 +10,10 @@
         	<p> 历史内容 ：</p>
           % if type(content) is list: 
       		%   for line in content: 
-                <br/> {{line}} <br/>
+                <br> {{line}} </br>
           %   end
           % else: 
             <br/> {{content}} <br/>
-
-       
-      		
 
         </body>
 </html>

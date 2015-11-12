@@ -18,6 +18,7 @@ def check_file():
         file_content = "Empty Diary" 
 
     return file_content
+    
 
 
 def diary_write(data):  
