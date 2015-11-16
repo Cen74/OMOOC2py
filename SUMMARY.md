@@ -16,6 +16,8 @@
   * [101 日记系统](_src/om2py0w/0wex0/main.py)
 * [素材 (draft)](draft/README.md)
   * [教程该怎么写](draft/how2tutorial.md)
+  * [Python unicode 与中文](note/unicode.md)
+  * [pyenv和virtualenv 简介](note/pyenv.md)
 * [教程](guide/README.md)
   * [github&gitbook](Week0/调试disqus.md)	
 * [有关](ABOUT.md)
