@@ -47,6 +47,9 @@ def foo():
 			history = requests.get('http://localhost:8080/diary')
 			print "The diary histroy is :", '-'*10
 			print_html(history.text)
+		elif input_c[0:2] == 'st:'
+			TAG = input_c[3:]
+			
 
 		else:
 			requests.post("http://localhost:8080/cmd", data = {"key":input_c})
