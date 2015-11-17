@@ -54,19 +54,20 @@ def foo():
 			TAG = input_c[3:]
 			print TAG
 			if TAG != '':   # is not None 不起作用
-				# print 'not Null'
+				print 'not Null'
 				set_TAG = requests.post("http://localhost:8080/cmd/set", data = {"key":TAG})
 				print set_TAG.text
 
 			else:
-				# TAG = 'Null'
+				TAG = 'Null'
 				print 'finsish'
 
 			
 
 		else:
-			requests.post("http://localhost:8080/cmd", data = {"key":input_c})
-
+			diary_line = {'key':TAG, 'value':input_c}
+			record = requests.post("http://localhost:8080/cmd", data = diary_line)
+			print record.text
 
 
 if __name__  == '__main__':

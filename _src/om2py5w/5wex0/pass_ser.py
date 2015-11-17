@@ -81,7 +81,7 @@ def set_tag():
 def input_kv():
     key = request.forms.get('key')
     value = request.forms.ge('value')
-    diary_write(key, value)
+    print diary_write(key, value)
 
 
 application = sae.create_wsgi_app(app)
