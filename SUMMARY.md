@@ -10,6 +10,7 @@
   * [GUI 极简日记桌面版](note/w2_task.md)
   * [101 极简日记网络版](note/w3_task.md)
   * [101 极简日记Web版](note/w4_task.md)
+  * [101 Paas](note/w5_task.md)
 * [迭代作品](2nDev/README.md)
 * [人生首秀](3rDemo/README.md)
 * [代码 (_src)](_src/README.md) 
