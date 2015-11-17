@@ -53,13 +53,13 @@ def foo():
 		elif input_c[0:3] == 'st:':
 			TAG = input_c[3:]
 			print TAG
-			if TAG != []:  # is not [] 不起作用
-				print 'not Null'
+			if TAG != '':   # is not None 不起作用
+				# print 'not Null'
 				set_TAG = requests.post("http://localhost:8080/cmd/set", data = {"key":TAG})
 				print set_TAG.text
 
 			else:
-				TAG = 'Null'
+				# TAG = 'Null'
 				print 'finsish'
 
 			
