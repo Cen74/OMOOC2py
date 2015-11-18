@@ -37,17 +37,25 @@ def diary_write(data, TAG='Null'):
     wtime = datetime.now()
     str_wtime = wtime.strftime("%Y-%m-%d-%H-%M-%S")
 
-    key = TAG+str_wtime
+    key = TAG+':'+str_wtime
     kv.set(key, data)
 
     return "key:%s, value:%s" % (key, data)
    
-def cmd_output(list_k):
-    TAG = 'Null'
+def cmd_output(TAG='Null'):
     str_bytes = "Diary History:\n"
-    str_bytes += "TAG as:%s\n" % TAG 
-    for line in list_k:
-        str_bytes += line
+    key = TAG+':' 
+    print 'TAG as:%s' % TAG
+    str_bytes += 'TAG as:%s\n' % TAG
+
+    if check_file() == 'Empty Diary':
+        return 'Empty Diary'
+
+
+    print kv.getkeys_by_prefix(key)
+    for i in kv.getkeys_by_prefix(key):
+        print kv.get(i)
+        str_bytes += kv.get(i)
         str_bytes += '\n' 
 
     return str_bytes
@@ -66,9 +74,8 @@ def print_input():
     return template('welcome_diary', content=data)
 
 @app.get('/cmd')
-def login():
-    history_cmd = check_file()    
-    return cmd_output(history_cmd)
+def login():  
+    return cmd_output()
 
 @app.post('/cmd/set')
 def set_tag():
@@ -80,8 +87,13 @@ def set_tag():
 @app.post('/cmd/input')
 def input_kv():
     key = request.forms.get('key')
-    value = request.forms.ge('value')
-    print diary_write(key, value)
+    value = request.forms.get('value')
+    return diary_write(value, key)
+
+@app.post('/cmd/history')
+def feedback_history():
+    key = request.forms.get('key')  
+    return cmd_output(key)   #'list' object has no attribute 'getkeys_by_prefix'
 
 
 application = sae.create_wsgi_app(app)

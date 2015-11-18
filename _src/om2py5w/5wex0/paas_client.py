@@ -25,7 +25,6 @@ def foo():
 	while True:
 		input_c = raw_input('%s>' % TAG)
 
-		print input_c[0:3]
 		if input_c in ['help', 'h', '?']:
 			print """
 			   \'q\' or \'quit\' \'bye\' for help
@@ -46,27 +45,20 @@ def foo():
 			break
 		
 		elif input_c == 'syn':
-			history = requests.get('http://localhost:8080/diary')
-			print "The diary histroy is :", '-'*10
-			print_html(history.text)
+			history = requests.post('http://localhost:8080/cmd/history', data = {"key":TAG})	
+			print history.text
 		
 		elif input_c[0:3] == 'st:':
 			TAG = input_c[3:]
-			print TAG
 			if TAG != '':   # is not None 不起作用
-				print 'not Null'
 				set_TAG = requests.post("http://localhost:8080/cmd/set", data = {"key":TAG})
 				print set_TAG.text
-
 			else:
 				TAG = 'Null'
-				print 'finsish'
-
-			
 
 		else:
 			diary_line = {'key':TAG, 'value':input_c}
-			record = requests.post("http://localhost:8080/cmd", data = diary_line)
+			record = requests.post("http://localhost:8080/cmd/input", data = diary_line)
 			print record.text
 
 
