@@ -82,83 +82,28 @@ web端开发很简单，直接借鉴w4的成果, 原来的函数略作修改。
         * getkeys_by_prefix[''] 实验了下如果没有prefix其实就是所有的keys - ok
  
     + 客户端/服务器交互
+    在CLI下如何处理标签花了很多时间。为了偷懒，把cli的各种操作都在服务器URL上有单独页面处理。时间主要花在是处理各种报错上，有很多值得总结的地方，可惜当初对问题记录不及时。经验主要是，出错时尽量多的打印过程、在函数返回值里面有执行结果的反馈。
+
+- 总结
+
+review了小赖同学的代码，很值得学习。
+    - KVDB 的数据结构设置。提起考虑了很多统计功能，有计数器。
+    前期思考时没有考虑清楚
+    - 列表推导式、beautifulsoap 的使用
+    有很多细节，前面只想尽快完成任务，实际上并没有掌握。因此在新的任务下，回潜意识的排斥用。
+ 
+ 
+
  
  
  
  
  
  
+
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
-### KVDB
- 
- 
-- ' ' control character
- 
-- kv2/kv3
- 
- 
- 
- 
--  The memcached server is a  program  which manages the data that memcached stores (not to be confused with a  machine , which may also be called server). In theory, it can run on any computer. However, it is typically run on the same machine that the main application runs on.
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-### 杂
- 
-- keyword:
- 
-    - WSGI,Direwolf是SAE为Python语言环境开发的Web服务,
- 
-    - shims(pyenv)
- 
--  Python当前目录下的子目录只有包含__init__.py才会被Python认为是一个package，才可以直接import。
- 
-- stdout,stderr
- 
-### Q
- 
--
-Internal Server Error
- 
-Data persistence
- 
--  relational database engines
- 
-    - sql  ORM
- 
- 
-    - sql lite, split
- 
- 
-- text
- 
-- object orinted database
- 
- 
- 
- 
-#### Pyenv
- 
- 
- 
- 
-> if which pyenv > /dev/null; then eval "$(pyenv init -)";
+
+
  
  
  
