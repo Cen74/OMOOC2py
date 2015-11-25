@@ -91,7 +91,19 @@ review了小赖同学的代码，很值得学习。
 前期思考时没有考虑清楚, 想走捷径
     - 列表推导式、beautifulsoap 的使用
 有很多细节，前面只想尽快完成任务，实际上并没有掌握。因此在新的任务下，回潜意识的排斥用。
- 
+    
+    - 例子:    
+
+```
+    # 排序
+    tmp = [item[1] for item in list(kv.get_by_prefix('key'))]
+    results = sorted(tmp, key = lambda x:x['time'], reverse=True)
+    # 多个标签处理
+    tags = request.forms.get('tags').replace(',',' ').replace('，',' ').split()
+    tags = [tag.lower() for tag in tags]
+
+    content = '\n'.join([row[0]+'>>'+row[1] for row in previous_content])
+```
  
 
  
