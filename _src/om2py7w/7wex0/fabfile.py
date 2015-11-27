@@ -10,7 +10,14 @@ def hello():
 def chaos():
 	local('date')
 
-def git(m='Fix problem'):
+def deploy(m='fixed problem'):
+	'''
+	deploy:m="COMMIT LOG" \t(defalut as "fixed problem") 
+	'''
+	_git(m)
+
+
+def _git(m='Fix problem'):
 	'''
 	git:m="COMMIT LOG" \t(defalut as "fixed problem") 
 	'''
@@ -22,3 +29,4 @@ def git(m='Fix problem'):
 			'&& git push'
 			'&& date'.format(msg=m)
 			)
+
