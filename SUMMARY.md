@@ -5,6 +5,7 @@
   * [0w4d 课堂笔记](Week0/note.md)
   * [w1 课堂笔记](note/w1d4_note.md)
   * [w2 课堂笔记](note/w2d4_note.md)
+  * [w7 课堂笔记](note/w7d3_note.md)
 * [基础旋进](1sTry/README.md)
   * [101 极简交互式日记系统](Week1/test1.md)
   * [GUI 极简日记桌面版](note/w2_task.md)
