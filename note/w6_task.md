@@ -20,3 +20,21 @@
 		－ 当然,想作成多人也是相同的技术.
 	－ 如何建立数据加密?防止有人通过分析网络协议伪造数据提交?
 
+## 过程 
+### 坑一：sae 微信接入及测试环境建立
+吸取前面经验，先花时间把环境搭好。在github 上建立一个san的仓库，与新浪云上的一致，每次可以同步push。第一次尝试在网页上提示配置失败，当时很难判断是具体是哪个环节出错，想到最关键是建立一个可及时反馈的测试环境，可以用 crul 模拟微信API 像本地sae环境发消息。参考 ［大妈的weixin chaos](https://chaos2wechat.readthedocs.org/en/latest/ch00/try.html)。本地测试没有问题，但还是提示一样的错误。
+
+- 问题：如何得到具体日志，定位问题
+	- 尝试1: 查看sae日志，发现报错是500，internal server。应该是sae 内部问题。
+	- 尝试2: 注释掉其它无关语句，逐一排查。发现有 print request.query.keys() 时就不行。当时还不知道怎么回事，参考其它人的教程，可能是sae bottle的问题。
+	- 尝试3: 思考怎么才能显示出更详细的sae内部日志，一开始纠结在sae的日志中心始终没找到。在google 上搜索 'sae 内部日志‘、'sae internal server error'、'sae debug bottle'最终想到要打开 bottle 的debug 模式。发现错误为：
+```
+AttributeError: 'Request' object has no attribute 'query'
+```
+
+	- 尝试4：upload bottle.py 500 消失. 但仍然配置失败。用 http://debug.fangbei.org/ 发现是token 验证失败。
+	- 尝试5: google 一下，可能是sae未通过身份验证会附加返回一些js内容。只有等身份验证通过后再尝试。
+
+- 小结
+	+ ‘关注情境’ 。这是《程序员的思维修炼》里提到的诀窍之一。这个问题花了几个小时都在如何找到日志，定位错误上。大妈48分钟乱入微信是建立在相关知识都很熟练的情境下，作为新手很容易忽视环境的关系，遇见问题就容易认为是程序写错了，对环境下意识的忽视。
+	+ goolge 搜索的关键词很重要。
