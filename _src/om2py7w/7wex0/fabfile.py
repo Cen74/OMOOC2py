@@ -16,6 +16,12 @@ def deploy(m='fixed problem'):
 	'''
 	_git(m)
 
+def _touch(m='fixed problem'):
+	local('pwd'
+			'&& touch git.log'
+			'&& echo "{msg}" >> git.log'.format(msg=m)
+			)
+
 
 def _git(m='Fix problem'):
 	'''
